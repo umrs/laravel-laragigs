@@ -37,6 +37,6 @@ class ListingsController extends Controller
 
         $listing = Listing::create($formData);
 
-        return redirect()->route('listings.show', ['listing' => $listing]);
+        return redirect()->route('listings.show', ['listing' => $listing])->with('message', 'Listing created successfully!');
     }
 }
