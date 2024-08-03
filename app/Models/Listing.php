@@ -20,4 +20,14 @@ class Listing extends Model
             $query->where('tags', 'like', "%$tag%");
         }
     }
+
+    public function scopeFilterSearch(Builder $query, ?string $search)
+    {
+        if ($search) {
+            $search = mb_strtolower($search);
+            $query
+                ->whereRaw('title ILIKE ?', "%$search%")
+                ->orWhereRaw('description ILIKE ?', "%$search%");
+        }
+    }
 }
