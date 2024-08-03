@@ -19,4 +19,24 @@ class ListingsController extends Controller
     public function show(Listing $listing) {
         return view('listings.show', ['listing' => $listing]);
     }
+
+    public function create() {
+        return view('listings.create');
+    }
+
+    public function store(Request $request) {
+        $formData = $request->validate([
+                                           'title' => ['required', 'max:255'],
+                                           'company' => ['required', 'max:255'],
+                                           'location' => ['required', 'max:255'],
+                                           'website' => ['required', 'url'],
+                                           'email' => ['required', 'email'],
+                                           'tags' => ['required', 'max:255'],
+                                           'description' => ['required', 'max:255'],
+                                       ]);
+
+        $listing = Listing::create($formData);
+
+        return redirect()->route('listings.show', ['listing' => $listing]);
+    }
 }
