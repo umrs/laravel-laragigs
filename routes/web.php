@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListingsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ListingsController::class, 'index'])->name('listings.index');
