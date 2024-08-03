@@ -73,4 +73,9 @@ class ListingsController extends Controller
 
         return redirect()->route('listings.show', ['listing' => $listing])->with('message', 'Listing updated successfully!');
     }
+
+    public function destroy(Listing $listing) {
+        $listing->delete();
+        return redirect()->route('listings.index')->with('message', 'Listing deleted successfully!');
+    }
 }
