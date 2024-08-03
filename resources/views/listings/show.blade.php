@@ -45,5 +45,9 @@
                 </div>
             </div>
         </div>
+
+        <div class="bg-gray-50 border border-gray-200 rounded mt-4 p-2 flex space-x-6">
+            <a href="{{ route('listings.edit', ['listing' => $listing]) }}"><i class="fa-solid fa-pencil"></i> Edit</a>
+        </div>
     </div>
 </x-layout>
