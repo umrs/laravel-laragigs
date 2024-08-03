@@ -72,6 +72,9 @@ class ListingFactory extends Factory
 
         $jobTitle = $this->faker->jobTitle();
         $tags = explode(' ', $jobTitle);
+        foreach ($tags as &$tag) {
+            $tag = mb_strtolower($tag);
+        }
         $tags = $this->faker->randomElements($tags, rand(1, count($tags)));
 
         return [

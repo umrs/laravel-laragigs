@@ -15,15 +15,7 @@
 
                 <h3 class="text-2xl mb-2">{{ $listing->title }}</h3>
                 <div class="text-xl font-bold mb-4">{{ $listing->company }}</div>
-                <ul class="flex">
-                    @foreach(explode(',', $listing->tags) as $tag)
-                        <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                        >
-                            <a href="#">{{ $tag }}</a>
-                        </li>
-                    @endforeach
-                </ul>
+                <x-listing-tags :tags="$listing->tags" />
                 <div class="text-lg my-4">
                     <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
                 </div>
