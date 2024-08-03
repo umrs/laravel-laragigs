@@ -36,6 +36,10 @@ class ListingsController extends Controller
                                            'description' => ['required', 'max:255'],
                                        ]);
 
+        if ($request->hasFile('logo')) {
+            $formData['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
         $listing = Listing::create($formData);
 
         return redirect()->route('listings.show', ['listing' => $listing])->with('message', 'Listing created successfully!');

@@ -21,6 +21,7 @@ class Listing extends Model
         'email',
         'website',
         'description',
+        'logo',
     ];
 
     public function scopeFilterTag(Builder $query, ?string $tag)
