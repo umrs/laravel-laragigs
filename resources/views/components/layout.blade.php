@@ -33,17 +33,27 @@
     ><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo"
         /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
-        <li>
-            <a href="register.html" class="hover:text-laravel"
-            ><i class="fa-solid fa-user-plus"></i> Register</a
-            >
-        </li>
-        <li>
-            <a href="login.html" class="hover:text-laravel"
-            ><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                Login</a
-            >
-        </li>
+        @auth()
+            <span class="font-bold uppercase">Welcome {{ auth()->user()->name }}</span>
+{{--            <li>--}}
+{{--                <a href="{{ route('listings.manager') }}" class="hover:text-laravel"--}}
+{{--                ><i class="fa-solid fa-gear"></i>--}}
+{{--                    Manage Listings</a--}}
+{{--                >--}}
+{{--            </li>--}}
+        @else
+            <li>
+                <a href="{{ route('register') }}" class="hover:text-laravel"
+                ><i class="fa-solid fa-user-plus"></i> Register</a
+                >
+            </li>
+            <li>
+                <a href="login.html" class="hover:text-laravel"
+                ><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Login</a
+                >
+            </li>
+        @endauth
     </ul>
 </nav>
 
@@ -65,7 +75,7 @@
         </p>
         <div>
             <a
-                    href="register.html"
+                    href="{{ route('register') }}"
                     class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
             >Sign Up to List a Gig</a
             >

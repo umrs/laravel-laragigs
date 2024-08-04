@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 # https://laravel.com/docs/11.x/controllers#actions-handled-by-resource-controllers
@@ -11,3 +12,6 @@ Route::post('/listings', [ListingsController::class, 'store'])->name('listings.s
 Route::get('/listings/{listing}/edit', [ListingsController::class, 'edit'])->name('listings.edit');
 Route::put('/listings/{listing}', [ListingsController::class, 'update'])->name('listings.update');
 Route::delete('/listings/{listing}', [ListingsController::class, 'destroy'])->name('listings.destroy');
+
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
