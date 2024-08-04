@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController
 {
@@ -24,5 +25,22 @@ class UserController
         $user = User::create($formData);
         auth()->login($user);
         return redirect()->route('listings.index')->with('message', 'Registration successful!');
+    }
+
+    public function login() {
+        return view('users.login');
+    }
+
+    public function authenticate(Request $request) {
+        $credentials = $request->validate([
+                                            'email' => 'required|email',
+                                            'password' => 'required',
+                                          ]);
+         if (Auth::attempt($credentials)) {
+             $request->session()->regenerate();
+             return redirect()->route('listings.index')->with('message', 'You are now logged in');
+         }
+
+         return back()->withErrors(['email' => 'Invalid credentials.']);
     }
 }
