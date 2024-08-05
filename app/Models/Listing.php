@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @method static latest()
@@ -22,6 +23,7 @@ class Listing extends Model
         'website',
         'description',
         'logo',
+        'user_id',
     ];
 
     public function scopeFilterTag(Builder $query, ?string $tag)
@@ -40,5 +42,10 @@ class Listing extends Model
                 ->whereRaw('title ILIKE ?', "%$search%")
                 ->orWhereRaw('description ILIKE ?', "%$search%");
         }
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

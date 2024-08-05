@@ -41,16 +41,26 @@ class ListingsController extends Controller
             $formData['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
+        $formData['user_id'] = auth()->id();
+
         $listing = Listing::create($formData);
 
         return redirect()->route('listings.show', ['listing' => $listing])->with('message', 'Listing created successfully!');
     }
 
     public function edit(Listing $listing) {
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('listings.edit', ['listing' => $listing]);
     }
 
     public function update(Request $request, Listing $listing) {
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $formData = $request->validate([
                                            'title' => ['required', 'max:255'],
                                            'company' => ['required', 'max:255'],
@@ -75,6 +85,10 @@ class ListingsController extends Controller
     }
 
     public function destroy(Listing $listing) {
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $listing->delete();
         return redirect()->route('listings.index')->with('message', 'Listing deleted successfully!');
     }

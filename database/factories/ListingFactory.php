@@ -79,6 +79,7 @@ class ListingFactory extends Factory
 
         return [
             'title' => $jobTitle,
+            'user_id' => $this->faker->numberBetween(1, 21),
             'tags' => implode(',', $tags),
             'company' => $this->faker->company(),
             'location' => $this->faker->city() . ', ' . $this->faker->randomElement($states),
