@@ -35,12 +35,12 @@
     <ul class="flex space-x-6 mr-6 text-lg">
         @auth()
             <span class="font-bold uppercase">Welcome {{ auth()->user()->name }}</span>
-{{--            <li>--}}
-{{--                <a href="{{ route('listings.manager') }}" class="hover:text-laravel"--}}
-{{--                ><i class="fa-solid fa-gear"></i>--}}
-{{--                    Manage Listings</a--}}
-{{--                >--}}
-{{--            </li>--}}
+            <li>
+                <a href="{{ route('listings.manage') }}" class="hover:text-laravel"
+                ><i class="fa-solid fa-gear"></i>
+                    Manage Listings</a
+                >
+            </li>
             <li>
                 <form method="POST" class="inline" action="{{ route('logout') }}">
                     @csrf

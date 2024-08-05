@@ -12,6 +12,7 @@ Route::post('/listings', [ListingsController::class, 'store'])->middleware('auth
 Route::get('/listings/{listing}/edit', [ListingsController::class, 'edit'])->middleware('auth')->name('listings.edit');
 Route::put('/listings/{listing}', [ListingsController::class, 'update'])->middleware('auth')->name('listings.update');
 Route::delete('/listings/{listing}', [ListingsController::class, 'destroy'])->middleware('auth')->name('listings.destroy');
+Route::get('/listings/manage', [ListingsController::class, 'manage'])->middleware('auth')->name('listings.manage');
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest')->name('register');
 Route::post('/register', [UserController::class, 'store'])->middleware('guest')->name('register.store');
