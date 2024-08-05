@@ -29,8 +29,8 @@
 </head>
 <body class="mb-48">
 <nav class="flex justify-between items-center mb-4">
-    <a href="index.html"
-    ><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo"
+    <a href="{{ route('listings.index') }}"
+    ><img class="w-24 logo" src="{{ asset('images/logo.png') }}" alt=""
         /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
         @auth()
@@ -71,7 +71,7 @@
 >
     <div
             class="absolute top-0 left-0 w-full h-full opacity-10 bg-no-repeat bg-center"
-            style="background-image: url('images/laravel-logo.png')"
+            style="background-image: url('/images/laravel-logo.png')"
     ></div>
 
     <div class="z-10">
