@@ -90,6 +90,7 @@ class ListingsController extends Controller
         }
 
         $listing->delete();
+        Storage::disk('public')->delete($listing->logo);
         return redirect()->route('listings.index')->with('message', 'Listing deleted successfully!');
     }
 
