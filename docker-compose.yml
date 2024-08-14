@@ -23,6 +23,7 @@ services:
             context: docker/nginx
         volumes:
             - .:/var/www/app:r
+        domainname: laragigs.loc
 
     php:
         build:
@@ -32,8 +33,7 @@ services:
 
     adminer:
         image: adminer:4.8.1-standalone
-        ports:
-            - 8080:8080
+        domainname: db.laragigs.loc
 
 volumes:
     database:
