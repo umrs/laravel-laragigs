@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreListingRequest;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,16 +27,8 @@ class ListingsController extends Controller
         return view('listings.create');
     }
 
-    public function store(Request $request) {
-        $formData = $request->validate([
-                                           'title' => ['required', 'max:255'],
-                                           'company' => ['required', 'max:255'],
-                                           'location' => ['required', 'max:255'],
-                                           'website' => ['required', 'url'],
-                                           'email' => ['required', 'email'],
-                                           'tags' => ['required', 'max:255'],
-                                           'description' => ['required', 'max:255'],
-                                       ]);
+    public function store(StoreListingRequest $request) {
+        $formData = $request->validated();
 
         if ($request->hasFile('logo')) {
             $formData['logo'] = $request->file('logo')->store('logos', 'public');

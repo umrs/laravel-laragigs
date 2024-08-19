@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
+ * @method static create($attributes)
  * @method static latest()
+ * @method static paginate()
  */
 class Listing extends Model
 {
