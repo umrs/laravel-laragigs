@@ -13,6 +13,6 @@ class UpdateListingRequest extends BaseListingRequest
     {
 //        return auth()->user()->can('update', Listing::class);
         $listing = $this->route('listing');
-        return $listing && auth()->user() && auth()->user()->id === $listing->user_id;
+        return $listing && auth()->user()?->id === $listing->user_id;
     }
 }

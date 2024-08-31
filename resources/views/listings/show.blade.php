@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        @if($listing->user_id == auth()->user()->id)
+        @if($listing->user_id == auth()->user()?->id)
         <div class="bg-gray-50 border border-gray-200 rounded mt-4 p-2 flex space-x-6">
             <a href="{{ route('listings.edit', ['listing' => $listing]) }}"><i class="fa-solid fa-pencil"></i> Edit</a>
             <form method="POST" action="{{ route('listings.destroy', ['listing' => $listing]) }}">
