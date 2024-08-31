@@ -7,6 +7,10 @@ RUN apt-get update \
   && docker-php-ext-install pgsql pdo_pgsql \
   && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update \
+  && apt-get install --no-install-recommends --no-install-suggests -y unzip \
+  && rm -rf /var/lib/apt/lists/*
+
 ## Install symfony cli
 #RUN apt-get update \
 #  && apt-get install --no-install-recommends --no-install-suggests -y apt-transport-https ca-certificates gnupg git unzip \
