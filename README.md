@@ -1,7 +1,7 @@
-Created from source:
+#### Created from source:
+Laravel From Scratch | 4+ Hour Course (Traversy Media) https://www.youtube.com/watch?v=MYyJ4PuL4pY
 
-https://www.youtube.com/watch?v=MYyJ4PuL4pY
-
-Laravel From Scratch | 4+ Hour Course
-
-Also, I added API with authorization by sanctum
+#### Also was added:
+* Sanctum authorization
+* CRUD API for listing
+* UI for creating/deleting tokens
