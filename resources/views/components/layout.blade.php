@@ -42,6 +42,12 @@
                 >
             </li>
             <li>
+                <a href="{{ route('tokens.index') }}" class="hover:text-laravel"
+                ><i class="fa-solid fa-shield-halved"></i>
+                    Manage Tokens</a
+                >
+            </li>
+            <li>
                 <form method="POST" class="inline" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit">
